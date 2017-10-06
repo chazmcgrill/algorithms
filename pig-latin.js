@@ -1,4 +1,4 @@
-/* Loops through each charater of the string 
+/* Loops through each character of the string
 and checks loop of consonants for match. If
 found loop is broken. Finishes by returning
 the str rearranged according to the first

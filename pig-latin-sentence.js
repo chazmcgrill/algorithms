@@ -19,12 +19,12 @@ function translator(str) {
       index;
 
   for (var i = 0; i < str.length; i++) {
-    for (var j = 0; j < cons.length; j++) {
-      if (str.charAt(i) === cons[j]) {
+    cons.forEach(function(con) {
+      if (str.charAt(i) === con) {
         index = i;
         i = str.length;
       }
-    }
+    });
   }
 
   return index === 0 ? str + "way" : str.substr(index) + str.substr(0, index) + "ay";
