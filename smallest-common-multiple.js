@@ -1,34 +1,33 @@
+/* Sorts array and extracts the highest and lowest
+value. It returns the result from multiples function.
+This loops through multiples of the highest number
+and checks if they are shared by every value in
+the range. */
+
 function smallestCommons(arr) {
   var sortedArray = arr.sort(),
-      highest = sortedArray[1],
-      lowest  = sortedArray[0],
-      result  = 0;
+      high = sortedArray[1],
+      low = sortedArray[0];
 
-  // loop to check numbers against multiple
-  function multipleCheck(val){
-    for(var j = highest - 1; j >= lowest; j--){
-      if(val % j !== 0){
+  function sharedMultiple(num){
+    for(var j = high - 1; j >= low; j--){
+      if (num % j !== 0) {
         return false;
       }
     }
     return true;
   }
 
-  // loop through multiples of highest number
-  function multiple(){
-    for(var i = highest;; i += highest){
-      if(multipleCheck(i)){
-        result = i;
-        return true;
-      }
+  function multiples() {
+    var num = high;
+    while (!sharedMultiple(num)) {
+      num += high;
     }
+    return num;
   }
 
-  if(multiple()){
-    return result;
-  }
-
+  return multiples();
 }
 
 
-smallestCommons([1,5]);
+console.log(smallestCommons([23,18]));
