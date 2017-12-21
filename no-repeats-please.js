@@ -18,7 +18,7 @@ function permAlone(str) {
     } else {
       for (var i = 0; i !== n; i++) {
         permutator(n - 1);
-        n % 2 === 0 ? charSwap(i, n - 1) : charSwap(0, n - 1);
+        charSwap(n % 2 === 0 ? i : 0, n - 1);
       }
     }
   }
