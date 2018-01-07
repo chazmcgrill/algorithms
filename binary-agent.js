@@ -2,7 +2,7 @@ function binaryAgent(str) {
   var arr = str.split(" ");
   var sentence = [];
 
-  // rloop through each item, reverse and pass to code converter.
+  // loop through each item, reverse and pass to code converter.
   arr.forEach(function(item) {
     var reverseItem = item.split("").reverse().join("");
     convertCode(reverseItem);
