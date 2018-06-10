@@ -6,21 +6,20 @@ the same key until num is less than the value. */
 
 function convertToRoman(num){
 
-  var allKeys = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
-      numerals = {
-        1: 'I', 4: 'IV', 5: 'V', 9: 'IX',
-        10: 'X', 40: 'XL', 50: 'L', 90: 'XC',
-        100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'
-      },
-      result = '';
+  const ALL_KEYS = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const NUMERALS = {
+    1: 'I', 4: 'IV', 5: 'V', 9: 'IX',
+    10: 'X', 40: 'XL', 50: 'L', 90: 'XC',
+    100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'
+  };
+  
+  const keys = ALL_KEYS.filter((el) => el <= num);
+  
+  let result = '';
 
-  var keys = allKeys.filter(function(element) {
-        return element <= num;
-      });
-
-  for (var i = 0; i < keys.length; i++) {
+  for (let i = 0, k = keys.length; i < k; i++) {
     if (num >= keys[i]) {
-      result += numerals[keys[i]];
+      result += NUMERALS[keys[i]];
       num -= keys[i];
       i--;
     }
@@ -29,4 +28,4 @@ function convertToRoman(num){
   return result;
 }
 
-console.log(convertToRoman(4));
+console.log(convertToRoman(1011));
