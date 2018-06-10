@@ -18,14 +18,15 @@ function convertToRoman(num){
   let result = '';
 
   for (let i = 0, k = keys.length; i < k; i++) {
-    if (num >= keys[i]) {
-      result += NUMERALS[keys[i]];
-      num -= keys[i];
-      i--;
+    const curKey = keys[i];
+    if (num >= curKey) {
+      result += NUMERALS[curKey];
+      num -= curKey;
+      if (num >= curKey) i--;
     }
   }
 
   return result;
 }
 
-console.log(convertToRoman(1011));
+console.log(convertToRoman());
