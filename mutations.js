@@ -1,16 +1,14 @@
-/* Loop through every character of the second element 
-of the array. then check if the character is present
-using index of. If the character is not found return
-false. If loop finishes the character is found so it
-returns true. */
+/* Create a lowercase copy of the array. Loop 
+through second strings characters compare to first 
+strings if not found return false if loop finishes 
+return true */
 
 function mutation(arr) {
-  for (var i = 0; i < arr[1].length; i++) {
-    if (arr[0].toLowerCase().indexOf(arr[1].toLowerCase().charAt(i)) === -1) {
-      return false;
-    }
+  const low = [arr[0].toLowerCase(), arr[1].toLowerCase()];
+  for (let el of low[1]) {
+    if (low[0].indexOf(el) === -1) return false;
   }
   return true;
 }
 
-console.log(mutation(["Hello", "helo"]));
+console.log(mutation(["ALien", "line"]));

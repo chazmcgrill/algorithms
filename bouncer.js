@@ -4,9 +4,7 @@ return statement with the element as filter removes
 false values. */
 
 function bouncer(arr) {
-  return arr.filter(function(element) {
-    return element;
-  });
+  return arr.filter(el => el);
 }
 
 console.log(bouncer([7, "ate", "", false, 9]));
