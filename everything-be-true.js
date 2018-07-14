@@ -1,14 +1,8 @@
-/* loops through collection returns false
-if pre key is not true. IF the loop finishes
-it returns true */
+/* Use the every array method to check 
+   every item matches pre key */
 
 function truthCheck(collection, pre) {
-  for (var i = 0; i < collection.length; i++) {
-    if (!(collection[i][pre])) {
-      return false;
-    }
-  }
-  return true;
+  return collection.every(el => el[pre]);
 }
 
 console.log(truthCheck([

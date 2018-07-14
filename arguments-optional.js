@@ -1,24 +1,19 @@
-/*  */
+/* Checks if the main value is a number. 
+  Checks if argument present and is number 
+  if so returns main + argument. If secondary 
+  function call it uses currying to return 
+  the sum of x and y */
 
-function addTogether(x) {
-
-  if (arguments[1]) {
-    if (typeof(arguments[1]) === 'number') {
-      return x + arguments[1];
-    } else {
-      return undefined;
+function addTogether(x, ...args) {
+  if (typeof (x) === 'number') {
+    if (args[0]) {
+      return typeof(args[0]) === 'number' ? x + args[0] : undefined;
+    } 
+  
+    return function(y) {
+      if (typeof(y) === "number") return x + y;
     }
-
-  } else if (typeof(arguments[0]) !== 'number') {
-    return undefined;
   }
-
-  return function(y) {
-    if (typeof(y) === "number") {
-      return x + y;
-    }
-  };
-
 }
 
 console.log(addTogether(2, 3));

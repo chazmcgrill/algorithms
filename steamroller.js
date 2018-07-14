@@ -5,11 +5,11 @@ array it is pushed to the result otherwise
 it is passed back through the same function. */
 
 function steamrollArray(arr) {
-  var result = [];
+  let result = [];
 
   function crusher(array) {
-    array.forEach(function(item) {
-      Array.isArray(item) ? crusher(item) : result.push(item);
+    array.forEach(el => {
+      Array.isArray(el) ? crusher(el) : result.push(el);
     });
   }
 
