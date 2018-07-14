@@ -7,9 +7,9 @@ function diffArray(arr1, arr2) {
   var result = [];
 
   function finder(a, b) {
-    for(var i = 0; i < a.length; i++) {
-      if (b.indexOf(a[i]) === -1) result.push(a[i]);
-    }
+    a.forEach(el => {
+      if (!b.includes(el)) result.push(el);
+    });
   }
 
   finder(arr1, arr2);

@@ -6,25 +6,14 @@ index. */
 
 
 function translatePigLatin(str) {
+  const vwl = str.match(/[aeiou]/);
+  const idx = vwl ? vwl.index : 1;
 
-  var cons = ["a", "e", "i", "o", "u"],
-      index;
-
-  for (var i = 0; i < str.length; i++) {
-    for (var j = 0; j < cons.length; j++) {
-      if (str.charAt(i) === cons[j]) {
-        index = i;
-        i = str.length;
-      }
-    }
-  }
-
-  return index === 0 ? str + "way" : str.substr(index) + str.substr(0, index) + "ay";
-
+  return idx === 0 ? str + "way" : str.substr(idx) + str.substr(0, idx) + "ay";
 }
 
 console.log(translatePigLatin("consonant"));
 console.log(translatePigLatin("eight"));
 console.log(translatePigLatin("glove"));
 console.log(translatePigLatin("algorithm"));
-console.log(translatePigLatin("charlie"));
+console.log(translatePigLatin("lmd"));

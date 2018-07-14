@@ -1,12 +1,9 @@
-/* Replaces every value before a capitol letter
-with a space. Then replaces any whitespace or
-underscores with a single dash. Returns this with
-the to lowercase method. */
+/* Splits the string using regex (negative lookahead 
+  on caps, whitespace and underscore) then joins with 
+  a dash and lowercases */
 
 function spinalCase(str) {
-  var spacer = str.replace(/(?!^)([A-Z])/g, ' $1');
-  
-  return spacer.replace(/[_\s]+/g, '-').toLowerCase();
+  return str.split(/(?=[A-Z])|\s|_/).join('-').toLowerCase();
 }
 
 console.log(spinalCase("thisIsSpinalTap"));
