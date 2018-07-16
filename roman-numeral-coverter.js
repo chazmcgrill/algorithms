@@ -1,8 +1,9 @@
 /* Removes denominations greater than the num value.
-Then loops through keys checking num is higher than or
-equal to the value. If it is a string of the numeral
-is concatonated onto the result. It keeps checking
-the same key until num is less than the value. */
+Usesa while loop to check if num is greater than or 
+equal to the current key it concats the current numeral 
+onto the result. If num is lower it removes the key from 
+the array allowing the next key to be checked. Once num 
+is zero the resulting numeral is returned */
 
 function convertToRoman(num){
 
@@ -13,20 +14,20 @@ function convertToRoman(num){
     100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'
   };
   
-  const keys = ALL_KEYS.filter((el) => el <= num);
+  const keys = ALL_KEYS.filter(el => el <= num);
   
   let result = '';
 
-  for (let i = 0, k = keys.length; i < k; i++) {
-    const curKey = keys[i];
-    if (num >= curKey) {
-      result += NUMERALS[curKey];
-      num -= curKey;
-      if (num >= curKey) i--;
+  while (num > 0) {
+    if (num >= keys[0]) {
+      result += NUMERALS[keys[0]];
+      num -= keys[0];
+    } else {
+      keys.shift()
     }
   }
 
   return result;
 }
 
-console.log(convertToRoman());
+console.log(convertToRoman(2018));

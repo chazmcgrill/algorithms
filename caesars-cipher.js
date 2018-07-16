@@ -4,16 +4,15 @@ each character extracts the ascii code. Then nudges along
 If its a non alpha character it just leaves as is. */
 
 function rot13(str) {
-  var result = "";
-  for (var i = 0; i < str.length; i++) {
-    var code = str.charCodeAt(i);
-    if (code > 64 && code < 91) {
-      result += String.fromCharCode(code > 77 ? code - 13 : code + 13);
-    } else {
-      result += str.charAt(i);
-    }
-  }
-  return result;
+  return str
+    .split('')
+    .map(char => {
+      let c = char.charCodeAt(0);
+      return c > 64 && c < 91 
+        ? String.fromCharCode(c > 77 ? c - 13 : c + 13)
+        : char.charAt(0);
+    })
+    .join('');
 }
 
 console.log(rot13("LBH QVQ VG!"));
