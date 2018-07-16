@@ -1,13 +1,5 @@
-
-
 function wordBlanks(myNoun, myAdjective, myVerb, myAdverb) {
-  var result = "";
-  // Your code below this line
-  
-result = "The " + myNoun + " had a " + myAdjective + " paw " + myVerb " that moved " + myAdverb;
-
-  // Your code above this line
-  return result;
+  return `The ${myNoun} had a ${myAdjective} paw ${myVerb} that moved ${myAdverb}`;
 }
 
 // Change the words here to test your function
