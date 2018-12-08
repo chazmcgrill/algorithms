@@ -12,14 +12,13 @@ function checkCashRegister(price, cash, cid) {
     { name: "PENNY", unit: 0.01, count: 0 }
   ];
   // get total change using reduce and update quantity
-  let totalChange = cid.reduce((acc, cur) => {
+  const totalChange = cid.reduce((acc, cur) => {
     const idx = till.indexOf(till.find(el => el.name === cur[0]));
     till[idx].quantity = Math.round(cur[1] / till[idx].unit);
     return cur[1] + acc;
   }, 0).toFixed(2);
 
   let changeDue = cash - price;
-  let status = "OPEN";
 
   if (changeDue.toFixed(2) === totalChange) {
     return { status: "CLOSED", change: cid };
@@ -44,7 +43,7 @@ function checkCashRegister(price, cash, cid) {
     .map(el => ([el.name, el.count * el.unit]));
   
   // return object with status and change
-  return { status, change };
+  return { status: "OPEN", change };
 }
 
 console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
