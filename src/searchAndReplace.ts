@@ -1,10 +1,6 @@
-/* Splits the string into an array for iteration.
-Before tested for uppercase using regex and it
-replaces after if true. IT then loops through the
-array and replaces a match of before with after.
-Returns rejoined array. */
+// replaces all instances of a word from a sentence
 
-function searchAndReplace(sentence: string, before: string, after: string): string {
+export function searchAndReplace(sentence: string, before: string, after: string): string {
     var array = sentence.split(' ');
 
     if (/^[A-Z]/.test(before)) {
@@ -21,6 +17,3 @@ function searchAndReplace(sentence: string, before: string, after: string): stri
 
     return array.join(' ');
 }
-
-console.log(searchAndReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"));
-console.log(searchAndReplace("Let us get back to more Coding", "Coding", "algorithms"));
