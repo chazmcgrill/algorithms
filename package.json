@@ -1,0 +1,26 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "collection of algorithms",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chazmcgrill/algorithms.git"
+  },
+  "keywords": [
+    "typescript",
+    "algorithms"
+  ],
+  "author": "Charlie Taylor <mail@charlietaylorcoder.com> (https://charlietaylorcoder.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chazmcgrill/algorithms/issues"
+  },
+  "homepage": "https://github.com/chazmcgrill/algorithms#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}

@@ -1,0 +1,7 @@
+// return a passed string with letters in reverse order
+
+function reverseString(str: string): string {
+    return str.split('').reverse().join('');
+}
+
+console.log(reverseString('test example'));
