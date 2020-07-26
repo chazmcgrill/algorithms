@@ -1,4 +1,4 @@
-import { seekAndDestroy } from '../seekAndDestroy';
+import { seekAndDestroy } from '../arrays';
 
 describe('seekAndDestroy', () => {
     it('removes any numbers in args from array', () => {
