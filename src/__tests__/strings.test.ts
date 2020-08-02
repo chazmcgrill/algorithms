@@ -1,6 +1,4 @@
-import strings from '../strings';
-
-const {
+import {
     reverseString,
     replaceWords,
     capitalizeString,
@@ -12,7 +10,7 @@ const {
     replaceWhiteSpace,
     kebabCase,
     findLongestWord,
-} = strings;
+} from '../strings';
 
 describe('reverseString', () => {
     it('reverses string correctly', () => {
