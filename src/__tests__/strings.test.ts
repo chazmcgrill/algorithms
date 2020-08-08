@@ -10,6 +10,13 @@ import {
     replaceWhiteSpace,
     kebabCase,
     findLongestWord,
+    binaryAgent,
+    confirmEnding,
+    isEmailValid,
+    findMissingLetter,
+    isMutation,
+    permutationCount,
+    isValidUSPhoneNumber,
 } from '../strings';
 
 describe('reverseString', () => {
@@ -161,6 +168,92 @@ describe('findLongestWord', () => {
 
     it('returns the length of the longest word in another sentence', () => {
         expect(findLongestWord('hello computer')).toEqual(8);
+    });
+});
+
+describe('binaryAgent', () => {
+    it('returns words from passed binary code string', () => {
+        expect(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111")).toEqual('Aren\'t bonfires fun!?');
+    });
+});
+
+describe('confirmEnding', () => {
+    it('confirms if string ends with the specified substring', () => {
+        expect(confirmEnding("Bastian", "n")).toBeTruthy();
+        expect(confirmEnding("Bastian", "e")).toBeFalsy();
+    });
+});
+
+describe('isEmailValid', () => {
+    it('returns true if email is valid', () => {
+        expect(isEmailValid("test_123@hello.com")).toBeTruthy();
+        expect(isEmailValid("tester@hello.co.uk")).toBeTruthy();
+        expect(isEmailValid("tes.ter@hello.co.uk")).toBeTruthy();
+        expect(isEmailValid("tester@123hello.co.uk")).toBeTruthy();
+    });
+
+    it('returns false if email is invalid', () => {
+        expect(isEmailValid("test_123@ @hello.com")).toBeFalsy();
+    });
+});
+
+describe('findMissingLetter finds the first missing letter', () => {
+    it('in a alphabetical sequence', () => {
+        expect(findMissingLetter("abce")).toEqual('d');
+        expect(findMissingLetter("abcdefh")).toEqual('g');
+        expect(findMissingLetter("a")).toEqual('b');
+    });
+
+    it('when empty string is passed', () => {
+        expect(findMissingLetter("")).toEqual('a');
+    });
+
+    it('when missing character is last', () => {
+        expect(findMissingLetter("a")).toEqual('b');
+    });
+});
+
+describe('isMutation returns', () => {
+    it('true when strings passed are mutations of each other', () => {
+        expect(isMutation(["hello", "Hello"])).toBeTruthy();
+        expect(isMutation(["Alien", "line"])).toBeTruthy();
+        expect(isMutation(["floor", "for"])).toBeTruthy();
+    });
+
+    it('false when strings passed are not mutations of each other', () => {
+        expect(isMutation(["hello", "hey"])).toBeFalsy();
+        expect(isMutation(["voodoo", "no"])).toBeFalsy();
+        expect(isMutation(["Tiger", "Zebra"])).toBeFalsy();
+    });
+});
+
+describe('permutationCount', () => {
+    it('returns count of permutations without repeat characters', () => {
+        expect(permutationCount('a')).toEqual(1);
+        expect(permutationCount('aab')).toEqual(2);
+        expect(permutationCount('aabb')).toEqual(8);
+        expect(permutationCount('abcde')).toEqual(120);
+    });
+});
+
+describe('isValidUSPhoneNumber returns', () => {
+    it('true when valid USA telephone number is passed', () => {
+        expect(isValidUSPhoneNumber('555-555-5555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('1 555-555-5555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('1 (555) 555-5555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('5555555555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('555-555-5555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('(555)555-5555')).toBeTruthy();
+        expect(isValidUSPhoneNumber('1(555)555-5555')).toBeTruthy();
+    });
+
+    it('false when invalid USA telephone number is passed', () => {
+        expect(isValidUSPhoneNumber('555-5555')).toBeFalsy();
+        expect(isValidUSPhoneNumber('5555555')).toBeFalsy();
+        expect(isValidUSPhoneNumber('1 555)555-5555')).toBeFalsy();
+        expect(isValidUSPhoneNumber('123**&!!asdf#')).toBeFalsy();
+        expect(isValidUSPhoneNumber('55555555')).toBeFalsy();
+        expect(isValidUSPhoneNumber('(6054756961)')).toBeFalsy();
     });
 });
 

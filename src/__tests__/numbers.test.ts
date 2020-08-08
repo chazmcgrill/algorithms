@@ -8,6 +8,8 @@ import {
     smallestCommonMultiple,
     factorialize,
     findNthFibonacciNumber,
+    collatz,
+    convertToRomanNumerals,
 } from '../numbers';
 
 describe('isPrime returns', () => {
@@ -120,5 +122,21 @@ describe('factorialize returns', () => {
     it('1 if the passed number is negative', () => {
         expect(factorialize(-5)).toEqual(1);
         expect(factorialize(-10)).toEqual(1);
+    });
+});
+
+describe('collatz returns', () => {
+    it('the collatz of passed number', () => {
+        expect(collatz(5)).toEqual(5);
+        expect(collatz(21)).toEqual(7);
+        expect(collatz(0)).toEqual(0);
+    });
+});
+
+describe('convertToRomanNumerals returns', () => {
+    it('the roman numeral string of passed number', () => {
+        expect(convertToRomanNumerals(2018)).toEqual('MMXVIII');
+        expect(convertToRomanNumerals(1012)).toEqual('MXII');
+        expect(convertToRomanNumerals(666)).toEqual('DCLXVI');
     });
 });

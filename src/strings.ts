@@ -70,3 +70,90 @@ export function findLongestWord(sentence: string): number {
         return currentWordLength > longestWordLength ? currentWordLength : longestWordLength;
     }, 0);
 }
+
+// convert binary code to words
+export function binaryAgent(str: string): string {
+    return str.split(' ')
+        .map(binary => String.fromCharCode(parseInt(binary, 2)))
+        .join('');
+}
+
+// confirms if the string ends with the specified part of string
+export function confirmEnding(str: string, target: string): boolean {
+    return target === str.substring(str.length - target.length);
+}
+
+// email validation checked
+export function isEmailValid(str: string): boolean {
+    const regex = /^[\w\.]+@[0-9a-zA-Z_]+?\.[a-zA-Z]{2,3}\.?\w+?$/;
+    return regex.test(str);
+}
+
+// finds the first missing letter in a alphabetical sequence
+export function findMissingLetter(str: string): string {
+    if (str === '') return 'a';
+
+    let previousCharCode = str.charCodeAt(0);
+
+    for (let i = 1; i < str.length; i++) {
+        const currentCharCode = str.charCodeAt(i);
+
+        if (currentCharCode === previousCharCode + 1) {
+            previousCharCode = currentCharCode;
+        } else {
+            return String.fromCharCode(currentCharCode - 1);
+        }
+    }
+
+    return String.fromCharCode(previousCharCode + 1);
+}
+
+// check whether a string is a mutation of another string
+export function isMutation(arr: [string, string]): boolean {
+    const [stringA, stringB] = [arr[0].toLowerCase(), arr[1].toLowerCase()];
+
+    for (let letter of stringB) {
+        if (stringA.indexOf(letter) === -1) return false;
+    }
+
+    return true;
+}
+
+// counts unique permutations without repeat characters
+export function permutationCount(str: string): number {
+    const letters = str.split('');
+    let permutationsArray: string[] = [];
+
+    function charSwap(a: number, b: number): void {
+        const temp = letters[a];
+        letters[a] = letters[b];
+        letters[b] = temp;
+    }
+
+    function hasRepeatedCharacters(item: string): boolean {
+        return /(.)\1+/.test(item);
+    }
+
+    function permutator(num: number): void {
+        if (num === 1) {
+            const joined = letters.join('');
+            if (!hasRepeatedCharacters(joined)) {
+                permutationsArray.push(joined);
+            }
+        } else {
+            for (let index = 0; index !== num; index++) {
+                permutator(num - 1);
+                charSwap(num % 2 === 0 ? index : 0, num - 1);
+            }
+        }
+    }
+
+    permutator(str.length);
+
+    return permutationsArray.length;
+}
+
+// validates us telephone numbers
+export function isValidUSPhoneNumber(str: string) {
+    return /^(1\s?)?(\(\d{3}\)|\d{3})(\s|-)?\d{3}(\s|-)?\d{4}$/.test(str);
+}

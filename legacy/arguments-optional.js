@@ -1,9 +1,4 @@
-/* Checks if the main value is a number. 
-  Checks if argument present and is number 
-  if so returns main + argument. If secondary 
-  function call it uses currying to return 
-  the sum of x and y */
-
+// adds two values with optional arguments
 function addTogether(x, ...args) {
   if (typeof (x) === 'number') {
     if (args[0]) {
