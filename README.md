@@ -3,7 +3,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/chazmcgrill/algorithms)](https://github.com/chazmcgrill/algorithms/releases)
 [![Twitter Follow](https://img.shields.io/twitter/follow/charlietcoder.svg?style=social)](https://twitter.com/charlietcoder)
 
-A collection of algoritms made using typescript made for educational purposes' 
+A collection of algoritms made for educational purposes' built using typescript
 
 #### Tech Stack
 - [Typescript](https://www.typescriptlang.org/)
