@@ -1,7 +1,6 @@
 # Algorithms
 
-[![CircleCI](https://circleci.com/gh/chazmcgrill/bugsweeper/tree/master.svg?style=svg)](https://circleci.com/gh/chazmcgrill/bugsweeper/tree/master)
-[![GitHub Release](https://img.shields.io/github/v/release/chazmcgrill/algorithms)](https://github.com/chazmcgrill/bugsweeper/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/chazmcgrill/algorithms)](https://github.com/chazmcgrill/algorithms/releases)
 [![Twitter Follow](https://img.shields.io/twitter/follow/charlietcoder.svg?style=social)](https://twitter.com/charlietcoder)
 
 A collection of algoritms made using typescript made for educational purposes' 
