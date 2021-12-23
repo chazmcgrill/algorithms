@@ -2,78 +2,154 @@ import { SinglyLinkedList } from '../SinglyLinkedList';
 
 describe('SinglyLinkedList data structure', () => {
     it('getArrayOfValues returns a flattened array of node values', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'bar', 'baz']);
+        const list = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'bar', 'baz']);
     });
 
     it('push method adds new nodes to end of list', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo']);
-        expect(singlyLinkedList.push('bar')).toEqual({ 
-            head: { next: { next: null, value: 'bar' }, value: 'foo' },
-            listLength: 2,
-            tail: { next: null, value: 'bar' },
-        });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'bar']);
+        const list = new SinglyLinkedList<string>(['foo']);
+        expect(list.push('bar')).toMatchInlineSnapshot(`
+            SinglyLinkedList {
+              "head": ListNode {
+                "next": ListNode {
+                  "next": null,
+                  "prev": undefined,
+                  "value": "bar",
+                },
+                "prev": undefined,
+                "value": "foo",
+              },
+              "listLength": 2,
+              "tail": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "bar",
+              },
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'bar']);
     });
 
     it('unshift method adds new nodes to start of list', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['baz']);
-        expect(singlyLinkedList.unshift('bar')).toEqual({
-            head: { next: { next: null, value: 'baz' }, value: 'bar' },
-            listLength: 2,
-            tail: { next: null, value: 'baz' },
-        });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['bar', 'baz']);
+        const list = new SinglyLinkedList<string>(['baz']);
+        expect(list.unshift('bar')).toMatchInlineSnapshot(`
+            SinglyLinkedList {
+              "head": ListNode {
+                "next": ListNode {
+                  "next": null,
+                  "prev": undefined,
+                  "value": "baz",
+                },
+                "prev": undefined,
+                "value": "bar",
+              },
+              "listLength": 2,
+              "tail": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "baz",
+              },
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['bar', 'baz']);
     });
 
     it('shift method removes node from start of list', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar']);
-        expect(singlyLinkedList.shift()).toEqual({
-            next: { next: null, value: 'bar' },
-            value: 'foo',
-        });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['bar']);
+        const list = new SinglyLinkedList<string>(['foo', 'bar']);
+        expect(list.shift()).toMatchInlineSnapshot(`
+            ListNode {
+              "next": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "bar",
+              },
+              "prev": undefined,
+              "value": "foo",
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['bar']);
     });
 
     it('pop method removes node from end of list', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar']);
-        expect(singlyLinkedList.pop()).toEqual({
-            next: null,
-            value: 'bar'
-        });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo']);
+        const list = new SinglyLinkedList<string>(['foo', 'bar']);
+        expect(list.pop()).toMatchInlineSnapshot(`
+            ListNode {
+              "next": null,
+              "prev": undefined,
+              "value": "bar",
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['foo']);
     });
 
     it('insertAtIndex inserts a node at specified index', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'baz']);
-        expect(singlyLinkedList.insertAtIndex(1, 'foobar')).toEqual({
-            head: {
-                next: {
-                    next: { next: null, value: 'baz' },
-                    value: 'foobar'
+        const list = new SinglyLinkedList<string>(['foo', 'baz']);
+        expect(list.insertAtIndex(1, 'foobar')).toMatchInlineSnapshot(`
+            SinglyLinkedList {
+              "head": ListNode {
+                "next": ListNode {
+                  "next": ListNode {
+                    "next": null,
+                    "prev": undefined,
+                    "value": "baz",
+                  },
+                  "prev": undefined,
+                  "value": "foobar",
                 },
-                value: 'foo'
-            },
-            listLength: 3,
-            tail: { next: null, value: 'baz' }
-        });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
+                "prev": undefined,
+                "value": "foo",
+              },
+              "listLength": 3,
+              "tail": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "baz",
+              },
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
     });
 
     it('removeFromIndex removes the node at specified index', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.removeFromIndex(1)).toEqual({ next: null, value: 'bar' });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'baz']);
+        const list = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.removeFromIndex(1)).toMatchInlineSnapshot(`
+            ListNode {
+              "next": null,
+              "prev": undefined,
+              "value": "bar",
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'baz']);
     });
 
     it('getNodeAtIndex gets the node at specified index', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.getNodeAtIndex(1)).toEqual({ next: { next: null, value: 'baz' }, value: 'bar' });
+        const list = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.getNodeAtIndex(1)).toMatchInlineSnapshot(`
+            ListNode {
+              "next": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "baz",
+              },
+              "prev": undefined,
+              "value": "bar",
+            }
+        `);
     });
 
     it('setNodeAtIndex sets the value of the node at specified index', () => {
-        const singlyLinkedList = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.setNodeAtIndex('foobar', 1)).toEqual({ next: { next: null, value: 'baz' }, value: 'foobar' });
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
+        const list = new SinglyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.setNodeAtIndex('foobar', 1)).toMatchInlineSnapshot(`
+            ListNode {
+              "next": ListNode {
+                "next": null,
+                "prev": undefined,
+                "value": "baz",
+              },
+              "prev": undefined,
+              "value": "foobar",
+            }
+        `);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
     });
 });

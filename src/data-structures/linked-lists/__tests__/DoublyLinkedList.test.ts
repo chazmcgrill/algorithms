@@ -2,13 +2,13 @@ import { DoublyLinkedList } from '../DoublyLinkedList';
 
 describe('DoublyLinkedList data structure', () => {
     it('getArrayOfValues returns a flattened array of node values', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'bar', 'baz']);
+        const list = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'bar', 'baz']);
     });
 
     it('push method adds new nodes to end of list', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo']);
-        expect(singlyLinkedList.push('bar')).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo']);
+        expect(list.push('bar')).toMatchInlineSnapshot(`
             DoublyLinkedList {
               "head": ListNode {
                 "next": ListNode {
@@ -31,12 +31,12 @@ describe('DoublyLinkedList data structure', () => {
               },
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'bar']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'bar']);
     });
 
     it('unshift method adds new nodes to start of list', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['baz']);
-        expect(singlyLinkedList.unshift('bar')).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['baz']);
+        expect(list.unshift('bar')).toMatchInlineSnapshot(`
             DoublyLinkedList {
               "head": ListNode {
                 "next": ListNode {
@@ -59,36 +59,36 @@ describe('DoublyLinkedList data structure', () => {
               },
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['bar', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['bar', 'baz']);
     });
 
     it('shift method removes node from start of list', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar']);
-        expect(singlyLinkedList.shift()).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'bar']);
+        expect(list.shift()).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
               "prev": null,
               "value": "foo",
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['bar']);
+        expect(list.getArrayOfValues()).toEqual(['bar']);
     });
 
     it('pop method removes node from end of list', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar']);
-        expect(singlyLinkedList.pop()).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'bar']);
+        expect(list.pop()).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
               "prev": null,
               "value": "bar",
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo']);
+        expect(list.getArrayOfValues()).toEqual(['foo']);
     });
 
     it('insertAtIndex inserts a node at specified index', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'baz']);
-        expect(singlyLinkedList.insertAtIndex(1, 'foobar')).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'baz']);
+        expect(list.insertAtIndex(1, 'foobar')).toMatchInlineSnapshot(`
             DoublyLinkedList {
               "head": ListNode {
                 "next": ListNode {
@@ -119,24 +119,24 @@ describe('DoublyLinkedList data structure', () => {
               },
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
     });
 
     it('removeFromIndex removes the node at specified index', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.removeFromIndex(1)).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.removeFromIndex(1)).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
               "prev": null,
               "value": "bar",
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'baz']);
     });
 
     it('getNodeAtIndex gets the node at specified index', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.getNodeAtIndex(1)).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.getNodeAtIndex(1)).toMatchInlineSnapshot(`
             ListNode {
               "next": ListNode {
                 "next": null,
@@ -154,8 +154,8 @@ describe('DoublyLinkedList data structure', () => {
     });
 
     it('setNodeAtIndex sets the value of the node at specified index', () => {
-        const singlyLinkedList = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
-        expect(singlyLinkedList.setNodeAtIndex(1, 'foobar')).toMatchInlineSnapshot(`
+        const list = new DoublyLinkedList<string>(['foo', 'bar', 'baz']);
+        expect(list.setNodeAtIndex('foobar', 1)).toMatchInlineSnapshot(`
             ListNode {
               "next": ListNode {
                 "next": null,
@@ -170,6 +170,6 @@ describe('DoublyLinkedList data structure', () => {
               "value": "foobar",
             }
         `);
-        expect(singlyLinkedList.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
+        expect(list.getArrayOfValues()).toEqual(['foo', 'foobar', 'baz']);
     });
 });
