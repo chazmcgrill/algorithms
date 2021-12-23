@@ -35,7 +35,7 @@ export function symmetricDifference<T>(...arrays: T[][]): T[] {
  * @param {array} arr array of items that are nested
  * @return {array} one dimensional array with no nesting
  */
-export function flatten<T>(arr: T[]) {
+export function flatten<T>(arr: T[]): T[] {
     let result: T[] = [];
 
     function flattener(array: T[]): void {
