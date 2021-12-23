@@ -1,21 +1,11 @@
+import { AbstractLinkedList } from "./AbstractLinkedList";
 import { ListNode } from "./ListNode";
 
-export class SinglyLinkedList<T> {
-    protected head: ListNode<T> | null;
-    protected tail: ListNode<T> | null;
-    protected listLength: number;
-
+export class SinglyLinkedList<T> extends AbstractLinkedList<T> {
     constructor(initialValues: T[] = []) {
-        this.head = null;
-        this.tail = null;
-        this.listLength = 0;
-
-        initialValues?.forEach(value => {
-            this.push(value);
-        });
+        super(initialValues)
     }
 
-    /** Adds new node to the end of the list */
     push(val: T) {
         const newNode = new ListNode(val);
 
@@ -31,7 +21,6 @@ export class SinglyLinkedList<T> {
         return this;
     }
 
-    /** Adds new node to the start of the list */
     unshift(val: T) {
         const newNode = new ListNode(val);
 
@@ -47,7 +36,6 @@ export class SinglyLinkedList<T> {
         return this;
     }
 
-    /** Inserts new node at specific index position */
     insertAtIndex(index: number, val: T) {
         if (index < 0 || index > this.listLength) return false;
 
@@ -65,7 +53,6 @@ export class SinglyLinkedList<T> {
         return this;
     }
 
-    /** Removes the first item from the list */
     shift() {
         if (!this.head) return false;
 
@@ -79,7 +66,6 @@ export class SinglyLinkedList<T> {
         return shiftedNode;
     }
 
-    /** Removes the last item from the list */
     pop() {
         if (!this.tail) return false;
 
@@ -98,7 +84,6 @@ export class SinglyLinkedList<T> {
         return poppedNode;
     }
 
-    /** Removes node at specific index */
     removeFromIndex(index: number) {
         if (index < 0 || index >= this.listLength) return false;
 
@@ -115,40 +100,5 @@ export class SinglyLinkedList<T> {
 
         this.listLength -= 1;
         return removedNode;
-    }
-
-    /** Gets node at specific index */
-    getNodeAtIndex(index: number) {
-        if (index >= this.listLength || index < 0) return null;
-        let currentNode = this.head;
-        let currentIndex = 0;
-        while (currentIndex !== index) {
-            currentNode = currentNode?.next || null;
-            currentIndex += 1;
-        }
-        return currentNode;
-    }
-
-    /** Sets node value at specific index */
-    setNodeAtIndex(val: T, index: number) {
-        const foundNode = this.getNodeAtIndex(index);
-
-        if (foundNode) {
-            foundNode.value = val;
-            return foundNode;
-        }
-
-        return null;
-    }
-
-    /** Gets an array of all the lists node values */
-    getArrayOfValues() {
-        const valueArray = [];
-        let currentNode = this.head;
-        while (currentNode) {
-            valueArray.push(currentNode.value);
-            currentNode = currentNode?.next;
-        }
-        return valueArray;
     }
 }

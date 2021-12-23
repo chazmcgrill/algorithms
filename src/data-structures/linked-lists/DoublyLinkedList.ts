@@ -1,21 +1,11 @@
+import { AbstractLinkedList } from "./AbstractLinkedList";
 import { ListNode } from "./ListNode";
 
-export class DoublyLinkedList<T> {
-    protected head: ListNode<T> | null;
-    protected tail: ListNode<T> | null;
-    protected listLength: number;
-
+export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
     constructor(initialValues: T[] = []) {
-        this.head = null;
-        this.tail = null;
-        this.listLength = 0;
-
-        initialValues?.forEach(value => {
-            this.push(value);
-        });
+        super(initialValues)
     }
 
-    /** Adds new node to the end of the list */
     push(val: T) {
         const newNode = new ListNode(val, true);
         if (!this.head) {
@@ -30,7 +20,6 @@ export class DoublyLinkedList<T> {
         return this;
     }
 
-    /** Adds new node to the start of the list */
     unshift(val: T) {
         const newNode = new ListNode(val);
         if (!this.head) {
@@ -45,7 +34,6 @@ export class DoublyLinkedList<T> {
         return this;
     }
 
-    /** Inserts new node at specific index position */
     insertAtIndex(index: number, val: T) {
         if (index > this.listLength) return false;
 
@@ -68,7 +56,6 @@ export class DoublyLinkedList<T> {
         return this;
     }
 
-    /** Removes the first item from the list */
     shift() {
         if (!this.head) return false;
 
@@ -87,7 +74,6 @@ export class DoublyLinkedList<T> {
         return shiftedNode;
     }
 
-    /** Removes the last item from the list */
     pop() {
         if (this.listLength === 0) return false;
 
@@ -106,8 +92,7 @@ export class DoublyLinkedList<T> {
 
         return popped;
     }
-
-    /** Removes node at specific index */
+    
     removeFromIndex(index: number) {
         let removedNode;
         if (index >= this.listLength) return false;
@@ -118,7 +103,7 @@ export class DoublyLinkedList<T> {
             removedNode = this.pop();
         } else {
             removedNode = this.getNodeAtIndex(index);
-            if (!removedNode || removedNode === true) return false;
+            if (!removedNode ) return false;
 
             const after = removedNode.next;
             const before = removedNode.prev;
@@ -129,41 +114,5 @@ export class DoublyLinkedList<T> {
             this.listLength -= 1;
         }
         return removedNode;
-    }
-
-    /** Gets node at specific index */
-    getNodeAtIndex(index: number) {
-        if (index >= this.listLength || index < 0) {
-            return false;
-        }
-        
-        let currentIndex = 0;
-        let currentNode = this.head;
-        while (currentIndex !== index) {
-            currentNode = currentNode?.next || null;
-            currentIndex++;
-        }
-        return currentNode;
-    }
-        
-    /** Sets node value at specific index */
-    setNodeAtIndex(index: number, val: T) {
-        const foundNode = this.getNodeAtIndex(index)
-        if (foundNode) {
-            foundNode.value = val
-            return foundNode;
-        }
-        return null;
-    }
-
-    /** Gets an array of all the lists node values */
-    getArrayOfValues() {
-        const valueArray = [];
-        let currentNode = this.head;
-        while (currentNode) {
-            valueArray.push(currentNode.value);
-            currentNode = currentNode?.next;
-        }
-        return valueArray;
     }
 }
