@@ -13,18 +13,18 @@ describe('DoublyLinkedList data structure', () => {
               "head": ListNode {
                 "next": ListNode {
                   "next": null,
-                  "prev": [Circular],
+                  "previous": [Circular],
                   "value": "bar",
                 },
-                "prev": null,
+                "previous": null,
                 "value": "foo",
               },
               "listLength": 2,
               "tail": ListNode {
                 "next": null,
-                "prev": ListNode {
+                "previous": ListNode {
                   "next": [Circular],
-                  "prev": null,
+                  "previous": null,
                   "value": "foo",
                 },
                 "value": "bar",
@@ -41,18 +41,18 @@ describe('DoublyLinkedList data structure', () => {
               "head": ListNode {
                 "next": ListNode {
                   "next": null,
-                  "prev": [Circular],
+                  "previous": [Circular],
                   "value": "baz",
                 },
-                "prev": undefined,
+                "previous": undefined,
                 "value": "bar",
               },
               "listLength": 2,
               "tail": ListNode {
                 "next": null,
-                "prev": ListNode {
+                "previous": ListNode {
                   "next": [Circular],
-                  "prev": undefined,
+                  "previous": undefined,
                   "value": "bar",
                 },
                 "value": "baz",
@@ -67,7 +67,7 @@ describe('DoublyLinkedList data structure', () => {
         expect(list.shift()).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
-              "prev": null,
+              "previous": null,
               "value": "foo",
             }
         `);
@@ -79,7 +79,7 @@ describe('DoublyLinkedList data structure', () => {
         expect(list.pop()).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
-              "prev": null,
+              "previous": null,
               "value": "bar",
             }
         `);
@@ -94,23 +94,23 @@ describe('DoublyLinkedList data structure', () => {
                 "next": ListNode {
                   "next": ListNode {
                     "next": null,
-                    "prev": [Circular],
+                    "previous": [Circular],
                     "value": "baz",
                   },
-                  "prev": [Circular],
+                  "previous": [Circular],
                   "value": "foobar",
                 },
-                "prev": null,
+                "previous": null,
                 "value": "foo",
               },
               "listLength": 3,
               "tail": ListNode {
                 "next": null,
-                "prev": ListNode {
+                "previous": ListNode {
                   "next": [Circular],
-                  "prev": ListNode {
+                  "previous": ListNode {
                     "next": [Circular],
-                    "prev": null,
+                    "previous": null,
                     "value": "foo",
                   },
                   "value": "foobar",
@@ -127,7 +127,7 @@ describe('DoublyLinkedList data structure', () => {
         expect(list.removeFromIndex(1)).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
-              "prev": null,
+              "previous": null,
               "value": "bar",
             }
         `);
@@ -140,12 +140,12 @@ describe('DoublyLinkedList data structure', () => {
             ListNode {
               "next": ListNode {
                 "next": null,
-                "prev": [Circular],
+                "previous": [Circular],
                 "value": "baz",
               },
-              "prev": ListNode {
+              "previous": ListNode {
                 "next": [Circular],
-                "prev": null,
+                "previous": null,
                 "value": "foo",
               },
               "value": "bar",
@@ -159,12 +159,12 @@ describe('DoublyLinkedList data structure', () => {
             ListNode {
               "next": ListNode {
                 "next": null,
-                "prev": [Circular],
+                "previous": [Circular],
                 "value": "baz",
               },
-              "prev": ListNode {
+              "previous": ListNode {
                 "next": [Circular],
-                "prev": null,
+                "previous": null,
                 "value": "foo",
               },
               "value": "foobar",

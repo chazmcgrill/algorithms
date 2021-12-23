@@ -9,52 +9,50 @@ export class SinglyLinkedList<T> extends AbstractLinkedList<T> {
     push(val: T) {
         const newNode = new ListNode(val);
 
-        if (!this.head) {
-            this.head = newNode;
-            this.tail = newNode;
+        if (this.head && this.tail) {
+            this.tail.next = newNode;
         } else {
-            if (this.tail) this.tail.next = newNode;
-            this.tail = newNode;
+            this.head = newNode;
         }
-
-        this.listLength += 1;
+        
+        this.tail = newNode;
+        this.incrementListLength();
         return this;
     }
 
     unshift(val: T) {
         const newNode = new ListNode(val);
 
-        if (!this.head) {
-            this.head = newNode;
-            this.tail = newNode;
-        } else {
+        if (this.head) {
             newNode.next = this.head;
-            this.head = newNode;
+        } else {
+            this.tail = newNode;
         }
-
-        this.listLength += 1;
+        
+        this.head = newNode;
+        this.incrementListLength();
         return this;
     }
 
     insertAtIndex(index: number, val: T) {
-        if (index < 0 || index > this.listLength) return false;
+        if (this.isIndexNotInRange(index)) return null;
 
+        // can use existing methods if node to be removed is head or tail
         if (index === 0) return this.unshift(val);
-
         if (index === this.listLength) return this.push(val);
 
         const newNode = new ListNode(val);
-        const after = this.getNodeAtIndex(index);
-        const before = this.getNodeAtIndex(index - 1);
-        newNode.next = after;
-        if (before) before.next = newNode;
+        const previousNode = this.getNodeAtIndex(index);
+        const nextNode = this.getNodeAtIndex(index - 1);
+        newNode.next = previousNode;
+        if (nextNode) nextNode.next = newNode;
 
-        this.listLength += 1;
+        this.incrementListLength();
         return this;
     }
 
     shift() {
-        if (!this.head) return false;
+        if (!this.head) return null;
 
         const shiftedNode = this.head;
         const newHead = this.head.next;
@@ -62,12 +60,12 @@ export class SinglyLinkedList<T> extends AbstractLinkedList<T> {
         if (!newHead) this.tail = newHead;
 
         this.head = newHead;
-        this.listLength -= 1;
+        this.decrementListLength();
         return shiftedNode;
     }
 
     pop() {
-        if (!this.tail) return false;
+        if (!this.tail) return null;
 
         const poppedNode = this.tail;
 
@@ -80,25 +78,25 @@ export class SinglyLinkedList<T> extends AbstractLinkedList<T> {
             this.tail = null;
         }
 
-        this.listLength -= 1;
+        this.decrementListLength();
         return poppedNode;
     }
 
     removeFromIndex(index: number) {
-        if (index < 0 || index >= this.listLength) return false;
+        if (this.isIndexNotInRange(index)) return null;
 
+        // can use existing methods if node to be removed is head or tail
         if (index === 0) return this.shift();
-
         if (index === this.listLength - 1) return this.pop();
 
-        const before = this.getNodeAtIndex(index - 1);
+        const nextNode = this.getNodeAtIndex(index - 1);
         const removedNode = this.getNodeAtIndex(index);
-        if (!before || !removedNode) return false;
+        if (!nextNode || !removedNode) return null;
 
-        before.next = removedNode.next;
+        nextNode.next = removedNode.next;
         removedNode.next = null;
 
-        this.listLength -= 1;
+        this.decrementListLength();
         return removedNode;
     }
 }

@@ -22,16 +22,28 @@ export abstract class AbstractLinkedList<T> {
     abstract unshift(val: T): this
 
     /** Inserts new node at specific index position */
-    abstract insertAtIndex(index: number, val: T): false | this
+    abstract insertAtIndex(index: number, val: T): null | this
 
     /** Removes the first item from the list */
-    abstract shift(): false | ListNode<T>
+    abstract shift(): null | ListNode<T>
 
     /** Removes the last item from the list */
-    abstract pop(): false | ListNode<T> | null
+    abstract pop(): null | ListNode<T>
 
     /** Removes node at specific index */
-    abstract removeFromIndex(index: number): boolean | ListNode<T> | null
+    abstract removeFromIndex(index: number): ListNode<T> | null;
+
+    protected incrementListLength() {
+        this.listLength += 1
+    }
+
+    protected decrementListLength() {
+        this.listLength -= 1
+    }
+
+    protected isIndexNotInRange(index: number) {
+        return index < 0 || index > this.listLength;
+    }
 
     /** Gets node at specific index */
     getNodeAtIndex(index: number) {
@@ -48,12 +60,10 @@ export abstract class AbstractLinkedList<T> {
     /** Sets node value at specific index */
     setNodeAtIndex(val: T, index: number) {
         const foundNode = this.getNodeAtIndex(index);
-
         if (foundNode) {
             foundNode.value = val;
             return foundNode;
         }
-
         return null;
     }
 

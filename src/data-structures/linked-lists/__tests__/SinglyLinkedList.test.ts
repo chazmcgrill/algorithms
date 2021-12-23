@@ -13,16 +13,16 @@ describe('SinglyLinkedList data structure', () => {
               "head": ListNode {
                 "next": ListNode {
                   "next": null,
-                  "prev": undefined,
+                  "previous": undefined,
                   "value": "bar",
                 },
-                "prev": undefined,
+                "previous": undefined,
                 "value": "foo",
               },
               "listLength": 2,
               "tail": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "bar",
               },
             }
@@ -37,16 +37,16 @@ describe('SinglyLinkedList data structure', () => {
               "head": ListNode {
                 "next": ListNode {
                   "next": null,
-                  "prev": undefined,
+                  "previous": undefined,
                   "value": "baz",
                 },
-                "prev": undefined,
+                "previous": undefined,
                 "value": "bar",
               },
               "listLength": 2,
               "tail": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "baz",
               },
             }
@@ -60,10 +60,10 @@ describe('SinglyLinkedList data structure', () => {
             ListNode {
               "next": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "bar",
               },
-              "prev": undefined,
+              "previous": undefined,
               "value": "foo",
             }
         `);
@@ -75,7 +75,7 @@ describe('SinglyLinkedList data structure', () => {
         expect(list.pop()).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
-              "prev": undefined,
+              "previous": undefined,
               "value": "bar",
             }
         `);
@@ -90,19 +90,19 @@ describe('SinglyLinkedList data structure', () => {
                 "next": ListNode {
                   "next": ListNode {
                     "next": null,
-                    "prev": undefined,
+                    "previous": undefined,
                     "value": "baz",
                   },
-                  "prev": undefined,
+                  "previous": undefined,
                   "value": "foobar",
                 },
-                "prev": undefined,
+                "previous": undefined,
                 "value": "foo",
               },
               "listLength": 3,
               "tail": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "baz",
               },
             }
@@ -115,7 +115,7 @@ describe('SinglyLinkedList data structure', () => {
         expect(list.removeFromIndex(1)).toMatchInlineSnapshot(`
             ListNode {
               "next": null,
-              "prev": undefined,
+              "previous": undefined,
               "value": "bar",
             }
         `);
@@ -128,10 +128,10 @@ describe('SinglyLinkedList data structure', () => {
             ListNode {
               "next": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "baz",
               },
-              "prev": undefined,
+              "previous": undefined,
               "value": "bar",
             }
         `);
@@ -143,10 +143,10 @@ describe('SinglyLinkedList data structure', () => {
             ListNode {
               "next": ListNode {
                 "next": null,
-                "prev": undefined,
+                "previous": undefined,
                 "value": "baz",
               },
-              "prev": undefined,
+              "previous": undefined,
               "value": "foobar",
             }
         `);
