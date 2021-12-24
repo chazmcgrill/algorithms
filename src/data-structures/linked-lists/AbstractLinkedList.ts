@@ -45,6 +45,48 @@ export abstract class AbstractLinkedList<T> {
         return index < 0 || index > this.listLength;
     }
 
+    /** Reset head and tail to null */
+    protected resetPointers() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    /** Generic handler for pushing */
+    protected handlePush(value: T, isDoublyLinked?: boolean) {
+        const newNode = new ListNode(value, isDoublyLinked);
+
+        // when the list is already populated we need to update next and previous
+        if (this.head && this.tail) {
+            this.tail.next = newNode;
+            if (isDoublyLinked) newNode.previous = this.tail;
+        // if there is nothing in the list the new node becomes head and tail
+        } else {
+            this.head = newNode;
+        }
+        
+        this.tail = newNode;
+        this.incrementListLength();
+        return this;
+    }
+
+    /** Generic handler for unshifting */
+    protected handleUnshift(value: T, isDoublyLinked?: boolean) {
+        const newNode = new ListNode(value, isDoublyLinked);
+
+        // when the list is already populated we need to update next and previous
+        if (this.head && this.tail) {
+            if (isDoublyLinked) this.head.previous = newNode;
+            newNode.next = this.head;
+        // if there is nothing in the list the new node becomes head and tail
+        } else {
+            this.tail = newNode;
+        }
+        
+        this.head = newNode;
+        this.incrementListLength();
+        return this;
+    }
+
     /** Gets node at specific index */
     getNodeAtIndex(index: number) {
         if (index >= this.listLength || index < 0) return null;

@@ -44,7 +44,7 @@ describe('DoublyLinkedList data structure', () => {
                   "previous": [Circular],
                   "value": "baz",
                 },
-                "previous": undefined,
+                "previous": null,
                 "value": "bar",
               },
               "listLength": 2,
@@ -52,7 +52,7 @@ describe('DoublyLinkedList data structure', () => {
                 "next": null,
                 "previous": ListNode {
                   "next": [Circular],
-                  "previous": undefined,
+                  "previous": null,
                   "value": "bar",
                 },
                 "value": "baz",

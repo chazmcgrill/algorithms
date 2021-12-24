@@ -1,39 +1,18 @@
 import { AbstractLinkedList } from "./AbstractLinkedList";
 import { ListNode } from "./ListNode";
 
+/** Linked list with references to next and previous nodes */
 export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
     constructor(initialValues: T[] = []) {
         super(initialValues)
     }
 
     push(value: T) {
-        const newNode = new ListNode(value, true);
-
-        if (this.head && this.tail) {
-            this.tail.next = newNode;
-            newNode.previous = this.tail;
-        } else {
-            this.head = newNode;
-        }
-        
-        this.tail = newNode;
-        this.incrementListLength();
-        return this;
+        return this.handlePush(value, true);
     }
 
     unshift(value: T) {
-        const newNode = new ListNode(value);
-
-        if (this.head && this.tail) {
-            this.head.previous = newNode;
-            newNode.next = this.head;
-        } else {
-            this.tail = newNode;
-        }
-        
-        this.head = newNode;
-        this.incrementListLength();
-        return this;
+        return this.handleUnshift(value, true);
     }
 
     insertAtIndex(index: number, value: T) {
@@ -43,17 +22,20 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         if (index === 0) return this.unshift(value);
         if (index === this.listLength) return this.push(value);
         
-        const newNode = new ListNode(value);
-        const nextNode = this.getNodeAtIndex(index);
-        if (!nextNode) return null;
+        const newNode = new ListNode(value, true);
+        
+        // get nodes before and after
+        const nodeAfter = this.getNodeAtIndex(index);
+        if (!nodeAfter) return null;
+        const nodeBefore = nodeAfter.previous;
+        
+        // set the relevant next and previous links
+        nodeAfter.previous = newNode;
+        if (nodeBefore) nodeBefore.next = newNode;
+        newNode.next = nodeAfter;
+        newNode.previous = nodeBefore;
 
-        const previousNode = nextNode.previous;
-        nextNode.previous = newNode;
-        if (previousNode) previousNode.next = newNode;
-        newNode.next = nextNode;
-        newNode.previous = previousNode;
         this.incrementListLength();
-    
         return this;
     }
 
@@ -63,34 +45,35 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         const shiftedNode = this.head;
         const newHead = this.head.next;
 
-        if (this.head !== this.tail) {
-            if (newHead) newHead.previous = null;
+        // if head next exists update relevant links
+        if (newHead) {
+            newHead.previous = null;
             shiftedNode.next = null;
+            this.head = newHead;
         } else {
-            this.tail = null;
+            this.resetPointers();
         }
 
-        this.head = newHead;
         this.decrementListLength();
         return shiftedNode;
     }
 
     pop() {
-        if (this.listLength === 0) return null;
+        if (!this.tail) return null;
 
         const poppedNode = this.tail;
-        const newTail = this.tail?.previous || null;
+        const newTail = this.tail.previous;
 
+        // if tail previous exists update relevant links
         if (newTail) {
             newTail.next = null;
-            if (this.tail) this.tail.previous = null;
+            this.tail.previous = null;
+            this.tail = newTail
         } else {
-            this.head = null;
+            this.resetPointers();
         }
 
-        this.tail = newTail;
         this.decrementListLength();
-
         return poppedNode;
     }
 
@@ -104,14 +87,17 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         const removedNode = this.getNodeAtIndex(index);
         if (!removedNode) return null;
 
-        const nextNode = removedNode.next;
-        const previousNode = removedNode.previous;
+        // get nodes before and after
+        const nodeAfter = removedNode.next;
+        const nodeBefore = removedNode.previous;
+
+        // set the relevant next and previous links
         removedNode.next = null;
         removedNode.previous = null;
-        if (previousNode) previousNode.next = nextNode;
-        if (nextNode) nextNode.previous = previousNode;
+        if (nodeBefore) nodeBefore.next = nodeAfter;
+        if (nodeAfter) nodeAfter.previous = nodeBefore;
+        
         this.decrementListLength();
-
         return removedNode;
     }
 }
