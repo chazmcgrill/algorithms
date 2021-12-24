@@ -1,7 +1,4 @@
-import {
-    insertionSort,
-    bubbleSort,
-} from '../sorting';
+import { insertionSort, bubbleSort } from '../sorting';
 
 describe('insertionSort', () => {
     it('sorts an array of numbers', () => {

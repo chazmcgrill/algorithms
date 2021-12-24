@@ -1,4 +1,4 @@
-import { ListNode } from "./ListNode";
+import { ListNode } from './ListNode';
 
 export abstract class AbstractLinkedList<T> {
     protected head: ListNode<T> | null;
@@ -10,35 +10,35 @@ export abstract class AbstractLinkedList<T> {
         this.tail = null;
         this.listLength = 0;
 
-        initialValues?.forEach(value => {
+        initialValues?.forEach((value) => {
             this.push(value);
         });
     }
 
     /** Adds new node to the end of the list */
-    abstract push(val: T): this
+    abstract push(val: T): this;
 
     /** Adds new node to the start of the list */
-    abstract unshift(val: T): this
+    abstract unshift(val: T): this;
 
     /** Inserts new node at specific index position */
-    abstract insertAtIndex(index: number, val: T): null | this
+    abstract insertAtIndex(index: number, val: T): null | this;
 
     /** Removes the first item from the list */
-    abstract shift(): null | ListNode<T>
+    abstract shift(): null | ListNode<T>;
 
     /** Removes the last item from the list */
-    abstract pop(): null | ListNode<T>
+    abstract pop(): null | ListNode<T>;
 
     /** Removes node at specific index */
     abstract removeFromIndex(index: number): ListNode<T> | null;
 
     protected incrementListLength() {
-        this.listLength += 1
+        this.listLength += 1;
     }
 
     protected decrementListLength() {
-        this.listLength -= 1
+        this.listLength -= 1;
     }
 
     protected isIndexNotInRange(index: number) {
@@ -59,11 +59,11 @@ export abstract class AbstractLinkedList<T> {
         if (this.head && this.tail) {
             this.tail.next = newNode;
             if (isDoublyLinked) newNode.previous = this.tail;
-        // if there is nothing in the list the new node becomes head and tail
+            // if there is nothing in the list the new node becomes head and tail
         } else {
             this.head = newNode;
         }
-        
+
         this.tail = newNode;
         this.incrementListLength();
         return this;
@@ -77,11 +77,11 @@ export abstract class AbstractLinkedList<T> {
         if (this.head && this.tail) {
             if (isDoublyLinked) this.head.previous = newNode;
             newNode.next = this.head;
-        // if there is nothing in the list the new node becomes head and tail
+            // if there is nothing in the list the new node becomes head and tail
         } else {
             this.tail = newNode;
         }
-        
+
         this.head = newNode;
         this.incrementListLength();
         return this;

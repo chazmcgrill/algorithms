@@ -14,8 +14,9 @@ export function replaceWords(sentence: string, before: string, after: string): s
 
     if (/^[A-Z]/.test(before)) afterWithCasing = capitalizeString(after);
 
-    return sentence.split(' ')
-        .map(word => word === before ? afterWithCasing : word)
+    return sentence
+        .split(' ')
+        .map((word) => (word === before ? afterWithCasing : word))
         .join(' ');
 }
 
@@ -27,8 +28,8 @@ export function truncateString(str: string, limit: number): string {
 
 // checks if passed string is a plaindrome ignoring non-alpha characters
 export function isPalindrome(str: string): boolean {
-    let flatStr = str.replace(/\W|_/g, '').toLowerCase();
-    return flatStr === flatStr.split("").reverse().join("");
+    const flatStr = str.replace(/\W|_/g, '').toLowerCase();
+    return flatStr === flatStr.split('').reverse().join('');
 }
 
 // converts a string to pig latin
@@ -52,13 +53,14 @@ export function repeatString(str: string, amount: number): string {
 }
 
 // replace white spaces with specified character
-export function replaceWhiteSpace(sentence: string, char: string = '_') {
+export function replaceWhiteSpace(sentence: string, char = '_') {
     return sentence.replace(/\s+/g, char);
 }
 
 // converts string to kebab case
 export function kebabCase(sentence: string): string {
-    return sentence.split(/(?=[A-Z])|\s|_/)
+    return sentence
+        .split(/(?=[A-Z])|\s|_/)
         .join('-')
         .toLowerCase();
 }
@@ -73,8 +75,9 @@ export function findLongestWord(sentence: string): number {
 
 // convert binary code to words
 export function binaryAgent(str: string): string {
-    return str.split(' ')
-        .map(binary => String.fromCharCode(parseInt(binary, 2)))
+    return str
+        .split(' ')
+        .map((binary) => String.fromCharCode(parseInt(binary, 2)))
         .join('');
 }
 
@@ -85,7 +88,7 @@ export function confirmEnding(str: string, target: string): boolean {
 
 // email validation checked
 export function isEmailValid(str: string): boolean {
-    const regex = /^[\w\.]+@[0-9a-zA-Z_]+?\.[a-zA-Z]{2,3}\.?\w+?$/;
+    const regex = /^[\w.]+@[0-9a-zA-Z_]+?\.[a-zA-Z]{2,3}\.?\w+?$/;
     return regex.test(str);
 }
 
@@ -112,7 +115,7 @@ export function findMissingLetter(str: string): string {
 export function isMutation(arr: [string, string]): boolean {
     const [stringA, stringB] = [arr[0].toLowerCase(), arr[1].toLowerCase()];
 
-    for (let letter of stringB) {
+    for (const letter of stringB) {
         if (stringA.indexOf(letter) === -1) return false;
     }
 
@@ -122,7 +125,7 @@ export function isMutation(arr: [string, string]): boolean {
 // counts unique permutations without repeat characters
 export function permutationCount(str: string): number {
     const letters = str.split('');
-    let permutationsArray: string[] = [];
+    const permutationsArray: string[] = [];
 
     function charSwap(a: number, b: number): void {
         const temp = letters[a];

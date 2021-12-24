@@ -33,7 +33,7 @@ export function findNthFibonacciNumber(n: number): number {
 // get an array of fibonacci numbers upto the passed integer
 export function findFibonacciNumbers(num: number): number[] {
     let highestNum = 0;
-    let numArray = [1, 1];
+    const numArray = [1, 1];
 
     for (let index = 2; highestNum < num; index++) {
         numArray.push(numArray[index - 2] + numArray[index - 1]);
@@ -66,7 +66,7 @@ export function sumRangeOfNumbers(range: [number, number]): number {
 
     while (min <= max) {
         sum += min;
-        min++
+        min++;
     }
 
     return sum;
@@ -134,7 +134,7 @@ export function convertToRomanNumerals(num: number): string {
         1000: 'M',
     };
 
-    const keys = ALL_KEYS.filter(el => el <= num);
+    const keys = ALL_KEYS.filter((el) => el <= num);
 
     let result = '';
 

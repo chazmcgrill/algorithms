@@ -1,10 +1,10 @@
-import { AbstractLinkedList } from "./AbstractLinkedList";
-import { ListNode } from "./ListNode";
+import { AbstractLinkedList } from './AbstractLinkedList';
+import { ListNode } from './ListNode';
 
 /** Linked list with references to next nodes */
 export class SinglyLinkedList<T> extends AbstractLinkedList<T> {
     constructor(initialValues: T[] = []) {
-        super(initialValues)
+        super(initialValues);
     }
 
     push(value: T) {

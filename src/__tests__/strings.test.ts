@@ -31,18 +31,21 @@ describe('reverseString', () => {
 
 describe('replaceWords', () => {
     it('replaces all instances of a word from a sentence', () => {
-        expect(replaceWords('A quick brown fox jumped over the lazy dog', 'jumped', 'leaped'))
-            .toEqual('A quick brown fox leaped over the lazy dog');
+        expect(replaceWords('A quick brown fox jumped over the lazy dog', 'jumped', 'leaped')).toEqual(
+            'A quick brown fox leaped over the lazy dog',
+        );
     });
 
     it('replaces words from a sentence respecting original casing', () => {
-        expect(replaceWords('Let us get back to more Coding', 'Coding', 'algorithms'))
-            .toEqual('Let us get back to more Algorithms');
+        expect(replaceWords('Let us get back to more Coding', 'Coding', 'algorithms')).toEqual(
+            'Let us get back to more Algorithms',
+        );
     });
 
     it('replaces multiple word from a sentence', () => {
-        expect(replaceWords('hello world hello world hello', 'hello', 'goodbye'))
-            .toEqual('goodbye world goodbye world goodbye');
+        expect(replaceWords('hello world hello world hello', 'hello', 'goodbye')).toEqual(
+            'goodbye world goodbye world goodbye',
+        );
     });
 });
 
@@ -108,13 +111,13 @@ describe('translateToPigLatin returns', () => {
 
 describe('translateSentenceToPigLatin returns', () => {
     it('sentence converted to pig latin', () => {
-        expect(translateSentenceToPigLatin('hello world'))
-            .toEqual('ellohay orldway');
+        expect(translateSentenceToPigLatin('hello world')).toEqual('ellohay orldway');
     });
 
     it('long sentence converted to pig latin', () => {
-        expect(translateSentenceToPigLatin('peter piper picked a pick of pickled pepper'))
-            .toEqual('eterpay iperpay ickedpay away ickpay ofway ickledpay epperpay');
+        expect(translateSentenceToPigLatin('peter piper picked a pick of pickled pepper')).toEqual(
+            'eterpay iperpay ickedpay away ickpay ofway ickledpay epperpay',
+        );
     });
 });
 
@@ -173,57 +176,61 @@ describe('findLongestWord', () => {
 
 describe('binaryAgent', () => {
     it('returns words from passed binary code string', () => {
-        expect(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111")).toEqual('Aren\'t bonfires fun!?');
+        expect(
+            binaryAgent(
+                '01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111',
+            ),
+        ).toEqual("Aren't bonfires fun!?");
     });
 });
 
 describe('confirmEnding', () => {
     it('confirms if string ends with the specified substring', () => {
-        expect(confirmEnding("Bastian", "n")).toBeTruthy();
-        expect(confirmEnding("Bastian", "e")).toBeFalsy();
+        expect(confirmEnding('Bastian', 'n')).toBeTruthy();
+        expect(confirmEnding('Bastian', 'e')).toBeFalsy();
     });
 });
 
 describe('isEmailValid', () => {
     it('returns true if email is valid', () => {
-        expect(isEmailValid("test_123@hello.com")).toBeTruthy();
-        expect(isEmailValid("tester@hello.co.uk")).toBeTruthy();
-        expect(isEmailValid("tes.ter@hello.co.uk")).toBeTruthy();
-        expect(isEmailValid("tester@123hello.co.uk")).toBeTruthy();
+        expect(isEmailValid('test_123@hello.com')).toBeTruthy();
+        expect(isEmailValid('tester@hello.co.uk')).toBeTruthy();
+        expect(isEmailValid('tes.ter@hello.co.uk')).toBeTruthy();
+        expect(isEmailValid('tester@123hello.co.uk')).toBeTruthy();
     });
 
     it('returns false if email is invalid', () => {
-        expect(isEmailValid("test_123@ @hello.com")).toBeFalsy();
+        expect(isEmailValid('test_123@ @hello.com')).toBeFalsy();
     });
 });
 
 describe('findMissingLetter finds the first missing letter', () => {
     it('in a alphabetical sequence', () => {
-        expect(findMissingLetter("abce")).toEqual('d');
-        expect(findMissingLetter("abcdefh")).toEqual('g');
-        expect(findMissingLetter("a")).toEqual('b');
+        expect(findMissingLetter('abce')).toEqual('d');
+        expect(findMissingLetter('abcdefh')).toEqual('g');
+        expect(findMissingLetter('a')).toEqual('b');
     });
 
     it('when empty string is passed', () => {
-        expect(findMissingLetter("")).toEqual('a');
+        expect(findMissingLetter('')).toEqual('a');
     });
 
     it('when missing character is last', () => {
-        expect(findMissingLetter("a")).toEqual('b');
+        expect(findMissingLetter('a')).toEqual('b');
     });
 });
 
 describe('isMutation returns', () => {
     it('true when strings passed are mutations of each other', () => {
-        expect(isMutation(["hello", "Hello"])).toBeTruthy();
-        expect(isMutation(["Alien", "line"])).toBeTruthy();
-        expect(isMutation(["floor", "for"])).toBeTruthy();
+        expect(isMutation(['hello', 'Hello'])).toBeTruthy();
+        expect(isMutation(['Alien', 'line'])).toBeTruthy();
+        expect(isMutation(['floor', 'for'])).toBeTruthy();
     });
 
     it('false when strings passed are not mutations of each other', () => {
-        expect(isMutation(["hello", "hey"])).toBeFalsy();
-        expect(isMutation(["voodoo", "no"])).toBeFalsy();
-        expect(isMutation(["Tiger", "Zebra"])).toBeFalsy();
+        expect(isMutation(['hello', 'hey'])).toBeFalsy();
+        expect(isMutation(['voodoo', 'no'])).toBeFalsy();
+        expect(isMutation(['Tiger', 'Zebra'])).toBeFalsy();
     });
 });
 
@@ -256,4 +263,3 @@ describe('isValidUSPhoneNumber returns', () => {
         expect(isValidUSPhoneNumber('(6054756961)')).toBeFalsy();
     });
 });
-

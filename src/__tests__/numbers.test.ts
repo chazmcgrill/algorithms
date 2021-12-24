@@ -1,10 +1,10 @@
 import {
-    isPrime, 
-    sumPrimes, 
-    sumOddFibonacciNumbers, 
-    findFibonacciNumbers, 
-    sumRangeOfNumbers, 
-    getNumberPositionIndex, 
+    isPrime,
+    sumPrimes,
+    sumOddFibonacciNumbers,
+    findFibonacciNumbers,
+    sumRangeOfNumbers,
+    getNumberPositionIndex,
     smallestCommonMultiple,
     factorialize,
     findNthFibonacciNumber,
@@ -26,7 +26,6 @@ describe('isPrime returns', () => {
         expect(isPrime(97)).toBeTruthy();
     });
 });
-
 
 describe('sumPrimes returns', () => {
     it('total of prime numbers upto the passed integer', () => {

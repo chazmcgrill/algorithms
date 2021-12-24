@@ -4,9 +4,14 @@
     "description": "Collection of algorithms and data structures",
     "main": "index.js",
     "scripts": {
-        "test": "jest --verbose --watch",
+        "check-types": "npx tsc",
+        "format": "npm run prettier -- --write",
+        "lint": "eslint . --ext .ts",
+        "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts)\"",
         "start": "tsc --watch",
-        "lint": "eslint . --ext .ts"
+        "test:watch": "jest --verbose --watch",
+        "test": "jest",
+        "validate": "npm run lint && npm run check-types"
     },
     "repository": {
         "type": "git",

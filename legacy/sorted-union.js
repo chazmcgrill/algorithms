@@ -7,17 +7,17 @@ filtered array with only the first instances of
 each element. */
 
 function uniteUnique(arr) {
-  var args = Array.from(arguments);
+    var args = Array.from(arguments);
 
-  var united = args.reduce(function(a, b) {
-    return a.concat(b);
-  });
+    var united = args.reduce(function (a, b) {
+        return a.concat(b);
+    });
 
-  var unique = united.filter(function(element, index, fullArray) {
-    return index === fullArray.indexOf(element);
-  });
+    var unique = united.filter(function (element, index, fullArray) {
+        return index === fullArray.indexOf(element);
+    });
 
-  return unique;
+    return unique;
 }
 
 console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
