@@ -1,8 +1,4 @@
-
-import {
-    linearSearch,
-    binarySearch,
-} from '../searching';
+import { linearSearch, binarySearch } from '../searching';
 
 describe('linearSearch', () => {
     it('returns true when element is present', () => {

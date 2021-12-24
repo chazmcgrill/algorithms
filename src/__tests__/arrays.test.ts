@@ -1,10 +1,10 @@
 import {
-    seekAndDestroy, 
-    symmetricDifference, 
-    flatten, 
-    nester, 
-    createNestedArray, 
-    dropElements, 
+    seekAndDestroy,
+    symmetricDifference,
+    flatten,
+    nester,
+    createNestedArray,
+    dropElements,
     findHighest,
 } from '../arrays';
 
@@ -37,22 +37,37 @@ describe('symmetricDifference', () => {
 describe('flatten', () => {
     it('returns nested arrays flattened in one dimensional array', () => {
         expect(flatten([1, [2], [3, [[4]]]])).toEqual([1, 2, 3, 4]);
-        expect(flatten([[1, [2]], [3, [[4]]]])).toEqual([1, 2, 3, 4]);
+        expect(
+            flatten([
+                [1, [2]],
+                [3, [[4]]],
+            ]),
+        ).toEqual([1, 2, 3, 4]);
     });
 });
 
 describe('nester', () => {
     it('returns array items nested into 2d array', () => {
-        expect(nester([1, 2, 3, 4], 2)).toEqual([[1, 2], [3, 4]]);
+        expect(nester([1, 2, 3, 4], 2)).toEqual([
+            [1, 2],
+            [3, 4],
+        ]);
         expect(nester([1, 2, 3, 4], 3)).toEqual([[1, 2, 3], [4]]);
     });
 });
 
 describe('createNestedArray', () => {
     it('creates an array of specfied size', () => {
-        expect(createNestedArray(2, 2)).toEqual([[null, null], [null, null]]);
+        expect(createNestedArray(2, 2)).toEqual([
+            [null, null],
+            [null, null],
+        ]);
         expect(createNestedArray(1, 4)).toEqual([[null, null, null, null]]);
-        expect(createNestedArray(3, 2)).toEqual([[null, null], [null, null], [null, null]]);
+        expect(createNestedArray(3, 2)).toEqual([
+            [null, null],
+            [null, null],
+            [null, null],
+        ]);
     });
 });
 
@@ -70,7 +85,21 @@ describe('dropElements return', () => {
 
 describe('findHighest returns', () => {
     it('an array of highest values from each nested array', () => {
-        expect(findHighest([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]])).toEqual([5, 27, 39, 1001]);
-        expect(findHighest([[4, 5, 1, 20], [40, 27, 18, 26], [32, 77, 37, 39], [2000, 1001, 857, 1]])).toEqual([20, 40, 77, 2000]);
+        expect(
+            findHighest([
+                [4, 5, 1, 3],
+                [13, 27, 18, 26],
+                [32, 35, 37, 39],
+                [1000, 1001, 857, 1],
+            ]),
+        ).toEqual([5, 27, 39, 1001]);
+        expect(
+            findHighest([
+                [4, 5, 1, 20],
+                [40, 27, 18, 26],
+                [32, 77, 37, 39],
+                [2000, 1001, 857, 1],
+            ]),
+        ).toEqual([20, 40, 77, 2000]);
     });
 });

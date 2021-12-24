@@ -1,9 +1,7 @@
-import {
-    memoize,
-} from '../misc';
+import { memoize } from '../misc';
 
 const inefficientFunction = memoize((num: number) => {
-    let total = 0
+    let total = 0;
     for (let i = 0; i < num; i++) {
         for (let j = 0; j < num; j++) {
             total += 1;
@@ -20,7 +18,7 @@ describe('memoize', () => {
 
     it('is faster on the second call with same params', () => {
         const t1 = Date.now();
-        inefficientFunction(2000)
+        inefficientFunction(2000);
         const firstCallMilliseconds = Date.now() - t1;
 
         const t2 = Date.now();

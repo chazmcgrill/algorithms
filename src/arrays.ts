@@ -6,7 +6,7 @@
  * @return {array} filtered array
  */
 export function seekAndDestroy<T>(arr: T[], ...args: T[]): T[] {
-    return arr.filter(item => !args.includes(item));
+    return arr.filter((item) => !args.includes(item));
 }
 
 /**
@@ -18,10 +18,10 @@ export function seekAndDestroy<T>(arr: T[], ...args: T[]): T[] {
 export function symmetricDifference<T>(...arrays: T[][]): T[] {
     const allItems = arrays.reduce((acc, cur) => [...acc, ...cur]);
     const uniqueItems = new Set(allItems);
-    let differenceArray: T[] = [];
+    const differenceArray: T[] = [];
 
-    uniqueItems.forEach(item => {
-        if (!arrays.every(arr => arr.includes(item))) {
+    uniqueItems.forEach((item) => {
+        if (!arrays.every((arr) => arr.includes(item))) {
             differenceArray.push(item);
         }
     });
@@ -36,10 +36,10 @@ export function symmetricDifference<T>(...arrays: T[][]): T[] {
  * @return {array} one dimensional array with no nesting
  */
 export function flatten<T>(arr: T[]): T[] {
-    let result: T[] = [];
+    const result: T[] = [];
 
     function flattener(array: T[]): void {
-        array.forEach(el => {
+        array.forEach((el) => {
             Array.isArray(el) ? flattener(el) : result.push(el);
         });
     }
@@ -56,8 +56,8 @@ export function flatten<T>(arr: T[]): T[] {
  * @return {array} two dimensional / nested array
  */
 export function nester<T>(arr: T[], size: number): T[][] {
-    let arrayCopy = [...arr];
-    let resultArray = [];
+    const arrayCopy = [...arr];
+    const resultArray = [];
 
     while (arrayCopy.length > 0) {
         resultArray.push(arrayCopy.splice(0, size));
@@ -75,7 +75,7 @@ export function nester<T>(arr: T[], size: number): T[][] {
  */
 export function createNestedArray(cols: number, rows: number): null[][] {
     return new Array(cols).fill(null).map(() => {
-        return new Array(rows).fill(null)
+        return new Array(rows).fill(null);
     });
 }
 
@@ -97,5 +97,5 @@ export function dropElements<T>(arr: T[], callback: (value: T) => boolean): T[] 
  * @return {array} an array of highest numbers
  */
 export function findHighest(arr: number[][]): number[] {
-    return arr.map(nestedArray => Math.max(...nestedArray));
+    return arr.map((nestedArray) => Math.max(...nestedArray));
 }

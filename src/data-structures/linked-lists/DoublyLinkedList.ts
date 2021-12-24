@@ -1,10 +1,10 @@
-import { AbstractLinkedList } from "./AbstractLinkedList";
-import { ListNode } from "./ListNode";
+import { AbstractLinkedList } from './AbstractLinkedList';
+import { ListNode } from './ListNode';
 
 /** Linked list with references to next and previous nodes */
 export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
     constructor(initialValues: T[] = []) {
-        super(initialValues)
+        super(initialValues);
     }
 
     push(value: T) {
@@ -21,14 +21,14 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         // can use existing methods if node to be removed is head or tail
         if (index === 0) return this.unshift(value);
         if (index === this.listLength) return this.push(value);
-        
+
         const newNode = new ListNode(value, true);
-        
+
         // get nodes before and after
         const nodeAfter = this.getNodeAtIndex(index);
         if (!nodeAfter) return null;
         const nodeBefore = nodeAfter.previous;
-        
+
         // set the relevant next and previous links
         nodeAfter.previous = newNode;
         if (nodeBefore) nodeBefore.next = newNode;
@@ -68,7 +68,7 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         if (newTail) {
             newTail.next = null;
             this.tail.previous = null;
-            this.tail = newTail
+            this.tail = newTail;
         } else {
             this.resetPointers();
         }
@@ -96,7 +96,7 @@ export class DoublyLinkedList<T> extends AbstractLinkedList<T> {
         removedNode.previous = null;
         if (nodeBefore) nodeBefore.next = nodeAfter;
         if (nodeAfter) nodeAfter.previous = nodeBefore;
-        
+
         this.decrementListLength();
         return removedNode;
     }

@@ -4,16 +4,15 @@ is retreived from the object of elements and
 pairings. */
 
 function pairElement(str) {
+    var pairings = { G: 'C', C: 'G', A: 'T', T: 'A' },
+        arr = str.split(''),
+        result = [];
 
-  var pairings = {G: "C", C: "G", A: "T", T: "A"},
-      arr = str.split(''),
-      result = [];
+    arr.forEach(function (item) {
+        result.push([item, pairings[item]]);
+    });
 
-  arr.forEach(function(item){
-    result.push([item, pairings[item]]);
-  });
-
-  return result;
+    return result;
 }
 
-console.log(pairElement("GCG"));
+console.log(pairElement('GCG'));
