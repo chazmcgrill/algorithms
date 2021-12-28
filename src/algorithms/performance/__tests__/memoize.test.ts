@@ -1,4 +1,4 @@
-import { memoize } from '../misc';
+import { memoize } from '../memoize';
 
 const inefficientFunction = memoize((num: number) => {
     let total = 0;
