@@ -5,9 +5,12 @@
 
 A collection of algorithms made for educational purposes' built using typescript.
 
+Find table of contents [here](./CONTENTS.md)
+
 #### Tech Stack
-- [Typescript](https://www.typescriptlang.org/)
-- [Jest](https://jestjs.io/)
+
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Jest](https://jestjs.io/)
 
 #### To Compile Typescript
 
