@@ -48,5 +48,12 @@
 
 ## Data Structures
 
+### Linked Lists
+
 -   [Singly Linked List](./src/data-structures/linked-lists/SinglyLinkedList.ts)
 -   [Doubly Linked List](./src/data-structures/linked-lists/DoublyLinkedList.ts)
+
+### Stacks & Queues
+
+-   [Stack](./src/data-structures/stacks-and-queues/Stack.ts)
+<!-- -   [Queue]() -->
