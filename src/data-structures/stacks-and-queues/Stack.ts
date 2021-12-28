@@ -1,7 +1,7 @@
-import { AbstractStackOrQueue } from './AbstractStackOrQueue';
+import { AbstractCollection } from './AbstractCollection';
 
 /** Stack data structure last in first out (LIFO) */
-export class Stack<T> extends AbstractStackOrQueue<T> {
+export class Stack<T> extends AbstractCollection<T> {
     constructor(initialValues: T[] = [], stackLimit = Infinity) {
         super(initialValues, stackLimit);
     }

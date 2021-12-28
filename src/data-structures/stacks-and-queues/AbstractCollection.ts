@@ -1,4 +1,4 @@
-export abstract class AbstractStackOrQueue<T> {
+export abstract class AbstractCollection<T> {
     protected stack: T[];
     protected stackLimit: number;
 
