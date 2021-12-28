@@ -56,4 +56,4 @@
 ### Stacks & Queues
 
 -   [Stack](./src/data-structures/stacks-and-queues/Stack.ts)
-<!-- -   [Queue]() -->
+-   [Queue](./src/data-structures/stacks-and-queues/Queue.ts)
