@@ -6,7 +6,8 @@
         "strict": true,
         "declaration": true,
         "outDir": "dist",
-        "sourceMap": false
+        "sourceMap": false,
+        "strictPropertyInitialization": false
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules"]
