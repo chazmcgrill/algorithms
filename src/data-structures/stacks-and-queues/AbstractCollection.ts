@@ -1,19 +1,19 @@
 export abstract class AbstractCollection<T> {
-    protected stack: T[];
-    protected stackLimit: number;
+    protected collection: T[];
+    protected collectionLimit: number;
 
-    constructor(initialValues: T[] = [], stackLimit = Infinity) {
-        this.stack = initialValues;
-        this.stackLimit = stackLimit;
+    constructor(initialValues: T[] = [], collectionLimit = Infinity) {
+        this.collection = initialValues;
+        this.collectionLimit = collectionLimit;
     }
 
     /** Tells us if the collection is empty */
     get isEmpty() {
-        return this.stack.length === 0;
+        return this.collection.length === 0;
     }
 
     /** Tells us if the collection is full */
     get isFull() {
-        return this.stack.length === this.stackLimit;
+        return this.collection.length === this.collectionLimit;
     }
 }
