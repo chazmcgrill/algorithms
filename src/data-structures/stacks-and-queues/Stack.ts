@@ -1,27 +1,13 @@
-import { StackImplementation } from './types';
+import { AbstractStackOrQueue } from './AbstractStackOrQueue';
 
 /** Stack data structure last in first out (LIFO) */
-export class Stack<T> implements StackImplementation<T> {
-    private stack: T[];
-    private stackLimit: number;
-
+export class Stack<T> extends AbstractStackOrQueue<T> {
     constructor(initialValues: T[] = [], stackLimit = Infinity) {
-        this.stack = initialValues;
-        this.stackLimit = stackLimit;
+        super(initialValues, stackLimit);
     }
 
     private get getStackTopIndex() {
         return this.stack.length - 1;
-    }
-
-    /** Tells us if the stack is empty */
-    get isEmpty() {
-        return this.stack.length === 0;
-    }
-
-    /** Tells us if the stack is full */
-    get isFull() {
-        return this.stack.length === this.stackLimit;
     }
 
     /** Adds item to the top of the data stack */
