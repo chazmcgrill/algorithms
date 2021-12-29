@@ -26,14 +26,26 @@ export class HashTable<T> {
         });
     }
 
-    private addItemToTable(newItem: Item<T>, tableToAddTo: Table<T> = this.table) {
-        const [key] = newItem;
+    /** Add item to table or update if item already exists. Returns a boolean to say whether cound to should be incremented. */
+    private addItemToTable(newItem: Item<T>, tableToAddTo: Table<T> = this.table): boolean {
+        const [key, value] = newItem;
         const tableSize = tableToAddTo.length;
         const index = this.hashKeyToIndex(key, tableSize);
         if (!tableToAddTo[index]) tableToAddTo[index] = [];
+
+        // check if item exists already
+        const rowIndex = tableToAddTo[index]?.findIndex(([itemKey]) => itemKey === key);
+        if (rowIndex !== -1 && rowIndex !== undefined) {
+            // typescript complaining about this being possibly undefined ?
+            (tableToAddTo[index] || [])[rowIndex][1] = value;
+            return false;
+        }
+
         tableToAddTo[index]?.push(newItem);
+        return true;
     }
 
+    /** Hasing function turns a key into a table index */
     private hashKeyToIndex(key: string, tableSize: number) {
         const letters = key.split('');
         const hash = letters.reduce((acc, letter) => {
@@ -44,6 +56,7 @@ export class HashTable<T> {
         return hash;
     }
 
+    /** Increases table size to maintain performance */
     private increaseTableSize() {
         const newTableSize = getNextPrime(this.getTableSize * 2);
         const newTable = new Array(newTableSize);
@@ -78,8 +91,8 @@ export class HashTable<T> {
 
         if (this.isOverCapacityThreshold) this.increaseTableSize();
 
-        this.addItemToTable(newItem);
-        this.numberItems += 1;
+        const shouldIncrement = this.addItemToTable(newItem);
+        if (shouldIncrement) this.numberItems += 1;
         return this.numberItems;
     }
 

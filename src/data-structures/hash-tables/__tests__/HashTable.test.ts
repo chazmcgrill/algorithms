@@ -15,6 +15,12 @@ describe('HashTable data structure', () => {
         expect(hashTable.getTableArray).toEqual([[['baz', 45]], [['foo', 21]]]);
     });
 
+    it('setItem should update item if it already exists', () => {
+        const hashTable = new HashTable([['foo', 21]]);
+        expect(hashTable.setItem('foo', 45)).toEqual(1);
+        expect(hashTable.getTableArray).toEqual([[['foo', 45]]]);
+    });
+
     it('setItem should return the amount of items', () => {
         const hashTable = new HashTable([['foo', 21]]);
         expect(hashTable.setItem('baz', 33)).toEqual(2);
