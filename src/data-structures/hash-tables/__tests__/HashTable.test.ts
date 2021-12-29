@@ -1,4 +1,4 @@
-import { HashTable } from '../HashTable';
+import { DEFAULT_PRIME_TABLE_SIZE, HashTable } from '../HashTable';
 
 describe('HashTable data structure', () => {
     it('getTableArray should return a nested array of key values', () => {
@@ -34,6 +34,22 @@ describe('HashTable data structure', () => {
         const hashTable = new HashTable([['foo', 21]]);
         const getItem = () => hashTable.getItem('bar');
         expect(getItem).toThrowError('Key not found');
+    });
+
+    it('deleteItem should remove item from table', () => {
+        const hashTable = new HashTable([
+            ['foo', 21],
+            ['bar', 35],
+        ]);
+        expect(hashTable.deleteItem('bar')).toEqual(['bar', 35]);
+        expect(hashTable.getTableArray).toEqual([[['foo', 21]]]);
+        expect(hashTable.getTableSize).toEqual(DEFAULT_PRIME_TABLE_SIZE);
+    });
+
+    it("deleteItem should throw error if key doesn't exist", () => {
+        const hashTable = new HashTable([['foo', 21]]);
+        const deleteItem = () => hashTable.deleteItem('bar');
+        expect(deleteItem).toThrowError('Key not found');
     });
 
     it('table should resize if capacity threshold is breached', () => {

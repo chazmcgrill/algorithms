@@ -1,9 +1,10 @@
 import { getNextPrime } from '../../algorithms/number/getNextPrime';
 
 type Item<T> = [string, T];
-type Table<T> = Item<T>[][];
+type TableRow<T> = Item<T>[] | undefined;
+type Table<T> = TableRow<T>[];
 
-const DEFAULT_PRIME_TABLE_SIZE = 2069;
+export const DEFAULT_PRIME_TABLE_SIZE = 2069;
 const ARBITRARY_PRIME_NUMBER_A = 7;
 const ARBITRARY_PRIME_NUMBER_B = 19;
 
@@ -30,7 +31,7 @@ export class HashTable<T> {
         const tableSize = tableToAddTo.length;
         const index = this.hashKeyToIndex(key, tableSize);
         if (!tableToAddTo[index]) tableToAddTo[index] = [];
-        tableToAddTo[index].push(newItem);
+        tableToAddTo[index]?.push(newItem);
     }
 
     private hashKeyToIndex(key: string, tableSize: number) {
@@ -71,6 +72,7 @@ export class HashTable<T> {
         return this.table.length;
     }
 
+    /** Adds key value pair to hash table */
     setItem(key: string, value: T) {
         const newItem: Item<T> = [key, value];
 
@@ -81,12 +83,33 @@ export class HashTable<T> {
         return this.numberItems;
     }
 
-    getItem = (key: string) => {
+    /** Adds keys value from hash table */
+    getItem(key: string) {
         const index = this.hashKeyToIndex(key, this.getTableSize);
         const selectedItem = this.table[index]?.find((item) => item[0] === key);
 
         if (!this.table[index] || !selectedItem) throw new Error('Key not found');
 
         return selectedItem[1];
-    };
+    }
+
+    /** Deletes key value pair from hash table */
+    deleteItem(key: string) {
+        const tableIndex = this.hashKeyToIndex(key, this.getTableSize);
+        const rowIndex = this.table[tableIndex]?.findIndex((item) => item[0] === key);
+
+        if (!this.table[tableIndex] || rowIndex === -1 || rowIndex === undefined) {
+            throw new Error('Key not found');
+        }
+
+        // When row only contains one item we want to remove the
+        if (this.table[tableIndex]?.length === 1) {
+            const [deletedRow] = this.table.splice(tableIndex, 1, undefined);
+            return deletedRow?.[0];
+        }
+
+        // typescript complaining about it possible being undefined
+        const [deletedItem] = (this.table[tableIndex] || []).splice(rowIndex, 1);
+        return deletedItem;
+    }
 }
