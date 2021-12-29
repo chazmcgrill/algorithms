@@ -47,7 +47,7 @@ describe('HashTable data structure', () => {
         expect(hashTable.getTableSize).toEqual(3);
         hashTable.setItem('bar', 22);
         hashTable.setItem('fiz', 11);
-        expect(hashTable.getTableSize).toEqual(6);
+        expect(hashTable.getTableSize).toEqual(7);
         expect(hashTable.getItem('foo')).toEqual(21);
     });
 

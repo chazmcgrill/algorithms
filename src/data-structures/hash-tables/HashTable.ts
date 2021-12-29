@@ -1,3 +1,5 @@
+import { getNextPrime } from '../../algorithms/number/getNextPrime';
+
 type Item<T> = [string, T];
 type Table<T> = Item<T>[][];
 
@@ -10,6 +12,8 @@ export class HashTable<T> {
     private numberItems = 0;
 
     /**
+     * Efficient key value store using hashing
+     *
      * @param initialItems array of items to preload with
      * @param initialTableSize size of table array should be a large prime number
      */
@@ -40,8 +44,7 @@ export class HashTable<T> {
     }
 
     private increaseTableSize() {
-        // TODO should be another prime number
-        const newTableSize = this.getTableSize * 2;
+        const newTableSize = getNextPrime(this.getTableSize * 2);
         const newTable = new Array(newTableSize);
 
         this.table.forEach((tableRow) => {
