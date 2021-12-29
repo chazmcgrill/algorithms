@@ -21,6 +21,7 @@
 -   [Various Fibonacci](./src/algorithms/number/fibonacci.ts)
 -   [Find Smallest Common Multiple](./src/algorithms/number/findSmallestCommonMultiple.ts)
 -   [Generate Random Number](./src/algorithms/number/getRandomNumber.ts)
+-   [Get Next Prime](./src/algorithms/number/getNextPrime.ts)
 -   [Check Prime](./src/algorithms/number/isPrime.ts)
 -   [Sum Range](./src/algorithms/number/sumRange.ts)
 
@@ -57,3 +58,7 @@
 
 -   [Stack](./src/data-structures/stacks-and-queues/Stack.ts)
 -   [Queue](./src/data-structures/stacks-and-queues/Queue.ts)
+
+### Hash Table
+
+-   [Hash Table](./src/data-structures/hash-tables/HashTable.ts)
